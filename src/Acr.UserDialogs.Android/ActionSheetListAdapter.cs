@@ -21,16 +21,18 @@ namespace Acr.UserDialogs {
             //Use base class to create the View
             var view = base.GetView(position, convertView, parent);
             var textView = view.FindViewById<TextView>(Android.Resource.Id.Text1);
+            var imageView = view.FindViewById<ImageView>(Android.Resource.Id.Icon);
 
             var item = this.config.Options.ElementAt(position);
 
             textView.Text = item.Text;
             if (item.ItemIcon != null)
-                textView.SetCompoundDrawablesWithIntrinsicBounds(item.ItemIcon.ToNative(), null, null, null);
+                imageView.SetImageDrawable(item.ItemIcon.ToNative());
+            //textView.SetCompoundDrawablesWithIntrinsicBounds(item.ItemIcon.ToNative(), null, null, null);
 
             //Add margin between image and text (support various screen densities)
-            var dp = (int)(10 * parent.Context.Resources.DisplayMetrics.Density + 0.5f);
-            textView.CompoundDrawablePadding = dp;
+            //var dp = (int)(10 * parent.Context.Resources.DisplayMetrics.Density + 0.5f);
+            //textView.CompoundDrawablePadding = dp;
 
             return view;
         }

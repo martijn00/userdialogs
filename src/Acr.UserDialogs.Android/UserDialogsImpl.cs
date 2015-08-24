@@ -57,7 +57,7 @@ namespace Acr.UserDialogs {
 				.SetTitle(config.Title);
 
             if (config.ItemIcon != null || config.Options.Any(x => x.ItemIcon != null)) {
-                var adapter = new ActionSheetListAdapter(this.GetTopActivity(), Android.Resource.Layout.SelectDialogItem, Android.Resource.Id.Text1, config);
+                var adapter = new ActionSheetListAdapter(this.GetTopActivity(), Android.Resource.Layout.ActivityListItem, Android.Resource.Id.Text1, config);
                 dlg.SetAdapter(adapter, (s, a) => config.Options[a.Which].Action?.Invoke());
             }
             else {
